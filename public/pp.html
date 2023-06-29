@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>owo what's this??</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      p {
+        font-size: 48px;
+        color: white;
+        text-align: center;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      button {
+        font-size: 24px;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: 2px solid #7289da;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      button:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      #heh {
+        padding: 10px;
+        display: inline-block;
+      }
+
+      #sizeComment {
+        display: inline-block;
+        position: relative;
+        font-size: 40px;
+      }
+
+      #sizeComment:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          violet,
+          indigo,
+          blue,
+          green,
+          yellow,
+          orange,
+          red
+        );
+        background-size: 200% 2px;
+        animation: rainbow 2s linear infinite;
+      }
+
+      @keyframes rainbow {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p id="sizeText"></p>
+      <p id="heh"></p>
+      <br />
+      <p id="sizeComment"></p>
+
+      <button id="invadePrivacy">Click Me!</button>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        let heh = $("#heh");
+        let ppSizeText = $("#sizeText");
+        let actualSize = $("#sizeComment");
+        let invadePrivacy = $("#invadePrivacy");
+
+        let maxCount = 15;
+
+        function getPPSize() {
+          let randomCount = Math.floor(Math.random() * (maxCount + 1));
+          let randomString = "8" + "=".repeat(randomCount) + ">";
+
+          heh.text(randomString);
+
+          ppSizeText.text(
+            "100% accurate dick size based on your browser history (which has certainly NOT been saved): "
+          );
+
+          let selectedComment = "";
+
+          if (randomCount >= 1 && randomCount <= 3) {
+            selectedComment = "bruh gtfo of here";
+          } else if (randomCount <= 5) {
+            selectedComment = "small asf. get better.";
+          } else if (randomCount <= 7) {
+            selectedComment = "mid. try harder.";
+          } else if (randomCount <= 9) {
+            selectedComment = "damn I see you";
+          } else if (randomCount <= 15) {
+            selectedComment = "bruh dm me";
+          }
+
+          actualSize.text(randomCount + "in, " + selectedComment);
+
+          invadePrivacy.hide();
+        }
+
+        invadePrivacy.click(function () {
+          getPPSize();
+        });
+      });
+    </script>
+  </body>
+</html>
